@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Invoice Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>Invoice<span>Sys</span></h2>
+    <nav>
+      <a class="active">Dashboard</a>
+      <a>Create Invoice</a>
+      <a>Invoices</a>
+      <a>Clients</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <header>
+      <div>
+        <h1>Dashboard</h1>
+        <p>Welcome back 👋</p>
+      </div>
+
+      <button onclick="toggleForm()">+ New Invoice</button>
+    </header>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="card">
+        <h3>Total</h3>
+        <p id="total">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Paid</h3>
+        <p id="paid">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Pending</h3>
+        <p id="pending">0</p>
+      </div>
+    </section>
+
+    <!-- Form (UPDATED FOR BACKEND) -->
+    <div class="modal" id="formModal">
+      <div class="modal-content">
+        <h2>Create Invoice</h2>
+
+        <!-- REQUIRED FOR BACKEND -->
+        <input id="customer_id" placeholder="Customer ID"/>
+
+        <input id="amount" type="number" placeholder="Amount"/>
+
+        <input id="due_date" type="date"/>
+
+        <select id="status">
+          <option>paid</option>
+          <option>unpaid</option>
+        </select>
+
+        <button onclick="addInvoice()">Add Invoice</button>
+      </div>
+    </div>
+
+    <!-- Table (MATCHS BACKEND JOIN QUERY) -->
+    <section class="table-box">
+      <h2>Invoices</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Email</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+
+        <tbody id="table"></tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
